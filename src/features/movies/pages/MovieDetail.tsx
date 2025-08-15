@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMovie } from "../service/useMovie";
 
@@ -6,6 +6,12 @@ const MovieDetail = () => {
   const { id } = useParams();
   const { getMovieById } = useMovie({});
   const { data, isLoading } = getMovieById(Number(id));
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   if (isLoading) return <p className="text-white text-center mt-10">Loading...</p>;
 

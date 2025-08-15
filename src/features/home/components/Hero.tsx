@@ -11,6 +11,7 @@ import "swiper/css/thumbs";
 import { useMovie } from '../../movies/service/useMovie';
 import { Navigation, Thumbs, Autoplay } from "swiper/modules";
 import playImg from "../images/Play.svg"
+import { useNavigate } from 'react-router-dom';
 
 
 interface Slide {
@@ -30,7 +31,7 @@ const Hero = () => {
     without_genres: "10749,36,18,99,27"
   })
   const { data } = getMovies()
-
+  const navigate = useNavigate();
 
   return (
     <div className="w-full max-w-[1200px] mx-auto mb-[50px]">
@@ -61,7 +62,7 @@ const Hero = () => {
                 <p className="text-[#fff] text-[14px] font-semibold leading-[125%] tracking-[0.01em] text-center mb-[16px]">
                   {slide.release_date} • {slide.original_language} • {slide.vote_average}
                 </p>
-                <button className="mt-4 mx-auto flex justify-center items-center gap-[7px] text-center text-[#C61F1F] py-[14px] px-[127px] bg-white hover:bg-[#ccc] hover:cursor-pointer rounded-[12px] font-semibold text-[16px] leading-[125%] tracking-[0.01em]">
+                <button onClick={() => navigate(`/movie/${slide.id}`)} className="mt-4 mx-auto flex justify-center items-center gap-[7px] text-center text-[#C61F1F] py-[14px] px-[127px] bg-white hover:bg-[#ccc] hover:cursor-pointer rounded-[12px] font-semibold text-[16px] leading-[125%] tracking-[0.01em]">
                   <img src={playImg} alt="" />
                   Смотреть
                 </button>
