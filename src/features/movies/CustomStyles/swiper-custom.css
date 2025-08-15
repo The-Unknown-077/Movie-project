@@ -1,0 +1,8 @@
+.swiper {
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
+}
+
+.swiper-slide img {
+  user-select: none;
+}
