@@ -4,7 +4,7 @@ import { useMovie } from '../../movies/service/useMovie';
 
 
 const Movies = () => {
-  const { getMovies } = useMovie(3)
+  const { getMovies } = useMovie({page: 1, without_genres: "10749,36,18,99,27"})
   const { data } = getMovies()
   return (
     <div className="Movies">

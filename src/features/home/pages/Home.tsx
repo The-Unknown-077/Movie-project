@@ -10,6 +10,7 @@ const Home = () => {
   })
   const {data} = getMovies()
   
+  
   return (
     <div className="Home">
       <Hero />
