@@ -19,7 +19,7 @@ const MovieView: FC<Props> = ({ data }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="container px-[55px]">
+    <div className="container mx-auto px-[55px]">
       <div className="mb-[20px]">
         <div className="flex justify-between items-center">
           <p className="font-semibold text-[20px] text-white leading-[120%] tracing-[0.01em]">На неделе</p>
@@ -29,9 +29,9 @@ const MovieView: FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-[20px] mb-[118px]">
+      <div className="grid mx-auto lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-[10px] mb-[118px]">
         {data?.map((movie: any) => (
-          <div className="w-[280px] h-[492px] mb-[20px]" key={movie.id} onClick={() => navigate(`/movie/${movie.id}`)}>
+          <div className="w-[280px] mx-auto h-[492px] mb-[20px]" key={movie.id} onClick={() => navigate(`/movie/${movie.id}`)}>
             <div className="bg-[#1d1d1d] w-[280px] h-[400px] rounded-[12px] mb-[12px]">
               <img className="w-full h-full rounded-[12px]" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" />
             </div>

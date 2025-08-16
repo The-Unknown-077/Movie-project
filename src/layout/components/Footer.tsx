@@ -16,8 +16,8 @@ import ii3 from "../assets/ii3.svg"
 
 const Footer = () => {
   return (
-    <footer className="container">
-      <div className="p-[30px] flex justify-between bg-[#111] w-[1180px] h-[240px] rounded-[12px] mb-[40px]">
+    <footer className="container mx-auto w-full">
+      <div className="p-[30px] flex justify-between bg-[#111] w-[1180px] mx-auto h-[240px] rounded-[12px] mb-[40px]">
         <div className="flex justify-center flex-col w-[20%]">
           <img src={logotype} className='w-[55px] h-[36px] mb-[48px]' alt="" />
           <img src={first} alt="" className='w-[150px] h-[44px] mb-[8px]' />
