@@ -6,7 +6,7 @@ import Hero from '../components/Hero';
 const Home = () => {
   const {getMovies} = useMovie({
     page: 1,
-    without_genres: "10749,36,18,99,27"
+    without_genres: "10749,36,18,99,27",
   })
   const {data} = getMovies()
   

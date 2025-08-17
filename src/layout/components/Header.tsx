@@ -1,25 +1,46 @@
 import { memo } from 'react';
 // import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.svg';
-import { useNavigate } from 'react-router-dom';
-import first from '../assets/Main.svg';
-import second from '../assets/Transfer.svg';
-import third from '../assets/Monitoring.svg';
-import fourth from '../assets/Monitoring (1).svg';
+import { NavLink, useNavigate } from 'react-router-dom';
+// import first from '../assets/Main.svg';
+import second from '../assets/movies.svg';
+import third from '../assets/saved.svg';
+import fourth from '../assets/search.svg';
 import ru from "../assets/RU.svg";
 import arrow from "../assets/Arrow.svg";
+import home from "../assets/home.svg"
 
 const Header = () => {
   const navigate = useNavigate();
   return (
     <header className="header_container bg-black/50 max-h-[80px] h-full">
       <nav className='py-[12px] flex justify-between items-center'>
-        <img src={logo} alt="" className='cursor-pointer' onClick={() => navigate("/")}/>
-        <div className="flex justify-center items-center">
-          <img src={first} alt="" />
-          <img src={second} alt="" />
-          <img src={third} alt="" />
-          <img src={fourth} alt="" />
+        <img src={logo} alt="" className='cursor-pointer' onClick={() => navigate("/")} />
+        <div className="flex justify-center items-center gap-[36px]">
+          <NavLink to="/">
+            <div className="flex flex-col justify-center items-center gap-[6px]">
+              <img src={home} className='size-[24px]' alt="" />
+              <p className='font-semibold text-[12px] leading-[117%] tracking-[0.01em] text-center text-[#a1a1a1]'>Главная</p>
+            </div>
+          </NavLink>
+          <NavLink to="/movies">
+            <div className="flex flex-col justify-center items-center gap-[6px]">
+              <img src={second} className='size-[24px]' alt="" />
+              <p className='font-semibold text-[12px] leading-[117%] tracking-[0.01em] text-center text-[#a1a1a1]'>Кино</p>
+            </div>
+          </NavLink>
+          <NavLink to="/saved">
+            <div className="flex flex-col justify-center items-center gap-[6px]">
+              <img src={third} className='size-[24px]' alt="" />
+              <p className='font-semibold text-[12px] leading-[117%] tracking-[0.01em] text-center text-[#a1a1a1]'>Избранное</p>
+            </div>
+          </NavLink>
+          <NavLink to="/search">
+            <div className="flex flex-col justify-center items-center gap-[6px]">
+              <img src={fourth} className='size-[24px]' alt="" />
+              <p className='font-semibold text-[12px] leading-[117%] tracking-[0.01em] text-center text-[#a1a1a1]'>Поиск</p>
+            </div>
+          </NavLink>
         </div>
         <div className="flex justify-center items-center gap-[20px]">
           <div className='bg-[#1D1D1D]/50 gap-[8px] flex justify-center items-center rounded-[12px] w-[92px] h-[48px] text-transparent py-[14px] px-[8px]'>

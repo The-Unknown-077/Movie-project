@@ -17,6 +17,7 @@ const AppRoutes = () => {
           {path:"bookmark", element:<Bookmark/> },
           {path:"movies", element:<Movies/> },
           {path:"movie/:id", element:<MovieDetail/> },
+          {path:"saved", element:<Bookmark/> },
         ]
     }
   ]);

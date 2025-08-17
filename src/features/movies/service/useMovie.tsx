@@ -4,7 +4,7 @@ import { api } from "../../../shared/api"
 
 interface MovieParams {
   page?: number
-  without_genres?: string
+  without_genres?: string,
 }
 
 export const useMovie = (params: MovieParams) => {
@@ -18,10 +18,18 @@ export const useMovie = (params: MovieParams) => {
     //     queryFn: ()=> api.get("/discover/movie", {params: {...params, without_genres: "10749,36,18,99,27"}}).then(res => res.data)
     // })
 
+    const getImages = (id: number, path: string) => useQuery({
+        queryKey: ["movie-key", params, id, path],
+        queryFn: ()=> api.get(`/movie/${id}/${path}`, {params}).then(res => res.data)
+    })
+    const similarMovies = (id: number, path: string) => useQuery({
+        queryKey: ["movie-key", params, id, path],
+        queryFn: ()=> api.get(`/movie/${id}/${path}`, {params}).then(res => res.data)
+    })
 
 
     const getMovieById = (id?: number) => useQuery({
-        queryKey: ["movie-key"],
+        queryKey: ["movie-key", id],
         queryFn: ()=> api.get(`/movie/${id}`).then(res => res.data)
     })
 
@@ -30,5 +38,5 @@ export const useMovie = (params: MovieParams) => {
     })
 
 
-    return {getMovies, createMovie, getMovieById}
+    return {getMovies, createMovie, getMovieById, getImages, similarMovies}
 }
