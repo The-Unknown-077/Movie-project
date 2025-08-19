@@ -8,6 +8,7 @@ const Bookmark = () => {
   const savedMovies = useSelector((state: RootState) => state.saved.movies);
   return (
     <div className="mx-auto">
+      <h2 className='text-2xl font-bold text-center text-white mt-[50px] mb-[40px] text-[42px]'>Закладки</h2>
       {savedMovies && savedMovies.length > 0 ? (
         <MovieView data={savedMovies} />
       ) : (
