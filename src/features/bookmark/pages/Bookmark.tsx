@@ -8,13 +8,15 @@ const Bookmark = () => {
   const savedMovies = useSelector((state: RootState) => state.saved.movies);
   return (
     <div className="mx-auto">
-      <h2 className='text-2xl font-bold text-center text-white mt-[50px] mb-[40px] text-[42px]'>Закладки</h2>
       {savedMovies && savedMovies.length > 0 ? (
-        <MovieView data={savedMovies} />
+        <>
+          <h2 className='text-2xl font-bold text-center text-white mt-[50px] mb-[40px] text-[42px]'>Закладки</h2>
+          <MovieView data={savedMovies} />
+        </>
       ) : (
         <div className="flex flex-col items-center justify-center mt-[70px]">
           <img
-            src={empty} 
+            src={empty}
             alt="empty"
             className="w-60 h-60 object-contain mb-4 opacity-70"
           />
