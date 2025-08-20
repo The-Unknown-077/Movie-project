@@ -13,7 +13,7 @@ interface MovieParams {
 
 export const useMovie = () => {
 
-    const getMovies = (params: MovieParams) => useQuery({
+    const getMovies = (params?: MovieParams) => useQuery({
         queryKey: ["movie-key", params],
         queryFn: ()=> api.get("/discover/movie", {params}).then(res => res.data)
     })
