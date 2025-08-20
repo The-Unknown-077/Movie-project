@@ -4,17 +4,14 @@ import MovieView from '../../movies/components/movie-view/MovieView';
 import Hero from '../components/Hero';
 
 const Home = () => {
-  const {getMovies} = useMovie({
-    page: 1,
-    without_genres: "10749,36,18,99,27",
-  })
-  const {data} = getMovies()
-  
-  
+  const { getMovies } = useMovie()
+  const { data } = getMovies({ page: 1, without_genres: "10749,36,18,99,27" })
+
+
   return (
     <div className="Home">
       <Hero />
-      <MovieView data={data?.results}/>
+      <MovieView data={data?.results} />
     </div>
   );
 };

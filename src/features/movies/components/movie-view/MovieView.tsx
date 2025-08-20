@@ -37,7 +37,7 @@ const MovieView: FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="grid mx-auto lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-[10px] mb-[118px]">
+      <div className="mx-auto grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3 mb-[118px]">
         {data?.map((movie: any) => {
           const isSaved = savedMovies.some((m) => m.id === movie.id);
           return (

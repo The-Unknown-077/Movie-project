@@ -4,10 +4,11 @@ import { useMovie } from "../service/useMovie";
 import arrow from "../images/arrow.svg";
 import MovieView from "../components/movie-view/MovieView";
 import CastDetail from "../../cast/pages/CastDetail";
+import { Image } from "antd";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const { getMovieById, getImages, similarMovies } = useMovie({});
+  const { getMovieById, getImages, similarMovies } = useMovie();
   const { data, isLoading } = getMovieById(Number(id));
   const { data: images, isLoading: imagesLoading } = getImages(Number(id), "images");
   const { data: similar } = similarMovies(Number(id), "similar");
@@ -18,14 +19,14 @@ const MovieDetail = () => {
     window.scrollTo({
       top: 0,
     });
-  }, [id]);
+  }, []);
 
   if (isLoading) return <p className="text-white text-center mt-10">Loading...</p>;
 
   return (
     <>
       <div className="text-white">
-        <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] relative">
+        <div className="w-full h-[350px] overflow-hidden md:h-[450px] lg:h-[550px] relative">
           <img
             src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
             alt={data?.title}
@@ -41,9 +42,9 @@ const MovieDetail = () => {
         <div className="container mx-auto px-4 py-8 max-w-5xl">
           <div className="flex flex-col md:flex-row gap-8">
             <img
-              src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+              src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
               alt={data?.title}
-              className="w-full rounded-lg shadow-lg"
+              className="w-[450px] h-[650px] rounded-lg shadow-lg"
             />
             <div className="space-y-4">
               <h2 className="text-4xl font-bold">{data?.title}</h2>
@@ -94,18 +95,23 @@ const MovieDetail = () => {
       </div>
       <div className="container mx-auto px-4 max-w-6xl mb-[70px]">
         {imagesLoading && <p className="text-gray-400">Loading images...</p>}
-
         {images?.backdrops && (
           <div className="mb-12">
             <h2 className="text-white text-[22px] font-semibold mb-[20px]">Кадры из фильма</h2>
-            <div style={{ scrollBehavior: "smooth", scrollbarColor: "transparent", scrollbarWidth: "none" }} className="flex gap-[15px] overflow-x-auto pb-2">
+            <div
+              style={{ scrollBehavior: "smooth" }}
+              className="flex gap-[15px] overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden"
+            >
               {images.backdrops.slice(0, 20).map((img: any, idx: number) => (
-                <img
-                  key={idx}
-                  src={`https://image.tmdb.org/t/p/w500${img.file_path}`}
-                  alt="movie backdrop"
-                  className="w-[300px] h-[170px] rounded-[10px] object-cover flex-shrink-0 hover:scale-[1.02] transition-transform duration-300"
-                />
+                <div key={idx} className="flex-shrink-0">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${img.file_path}`}
+                    alt="movie backdrop"
+                    width={300}
+                    height={170}
+                    className="rounded-[10px] object-cover hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
               ))}
             </div>
           </div>
