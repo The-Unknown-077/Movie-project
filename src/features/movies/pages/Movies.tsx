@@ -15,7 +15,7 @@ const Movies = () => {
   const sort_by = params.get("sort_by") || "popularity.desc"
 
 
-  const { data } = getMovies({ page, with_genres, sort_by })
+  const { data } = getMovies({ page, with_genres, sort_by})
   const { data: genreData } = getGenres()
   const options = genreData?.genres?.map(({ id, name }: any) => ({ value: id.toString(), label: name }))
 
