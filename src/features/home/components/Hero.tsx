@@ -26,11 +26,11 @@ interface Slide {
 
 const Hero = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
-  const { getMovies } = useMovie({
+  const { getMovies } = useMovie()
+  const { data } = getMovies({
     page: 12,
     without_genres: "10749,36,18,99,27"
   })
-  const { data } = getMovies()
   const navigate = useNavigate();
 
   return (
