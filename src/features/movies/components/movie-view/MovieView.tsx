@@ -29,19 +29,24 @@ const MovieView: FC<Props> = ({ data }) => {
   return (
     <div className={`container mx-auto px-[55px] ${pathname === "/movies" ? "pt-[58px]" : ""}`}>
       <div className="mb-[20px]">
-        <div className="flex justify-between items-center">
-          <p className="font-semibold text-[20px] text-white leading-[120%] tracing-[0.01em]">На неделе</p>
-          <div className="flex justify-center items-center gap-[2px]">
-            <p className="flex justify-center pb-[5px] items-center font-semibold text-[16px] text-[#c61f1f] leading-[120%] tracking-[0.01em] text-right">Показать все</p>
-            <img className="flex justify-center items-center" src={arrow} alt="" />
-          </div>
-        </div>
+        {
+          pathname !== "/search" ?
+            <div className="flex justify-between items-center">
+              <p className="font-semibold text-[20px] text-white leading-[120%] tracing-[0.01em]">На неделе</p>
+              <div className="flex justify-center items-center gap-[2px]">
+                <p className="flex justify-center pb-[5px] items-center font-semibold text-[16px] text-[#c61f1f] leading-[120%] tracking-[0.01em] text-right">Показать все</p>
+                <img className="flex justify-center items-center" src={arrow} alt="" />
+              </div>
+            </div>
+            :
+            <></>
+        }
       </div>
       <div className="mx-auto grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3 mb-[118px]">
         {data?.map((movie: any) => {
           const isSaved = savedMovies.some((m) => m.id === movie.id);
           return (
-            <div className="w-[280px] mx-auto h-[492px] mb-[20px] relative group" key={movie.id} >
+            <div className="w-full max-w-[280px] h-[492px] mb-[20px] relative group" key={movie.id} >
               <div onClick={() => navigate(`/movie/${movie.id}`)} className={movie.poster_path ? "bg-[#1d1d1d] w-[280px] h-[400px] rounded-[12px] mb-[12px]" : "flex justify-center items-center bg-[#1d1d1d] w-[280px] h-[400px] rounded-[12px] mb-[12px]"}>
                 {
                   movie.poster_path ?

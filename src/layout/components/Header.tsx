@@ -9,11 +9,23 @@ import fourth from '../assets/search.svg';
 import ru from "../assets/RU.svg";
 import arrow from "../assets/Arrow.svg";
 import home from "../assets/home.svg"
+import { useNetworkState } from "@uidotdev/usehooks";
 
 const Header = () => {
   const navigate = useNavigate();
+  const networkState = useNetworkState();
+  console.log(networkState);
+
   return (
     <header className="header_container bg-black/50 max-h-[80px] h-full">
+      {
+        !networkState.online && (
+          <div className="fixed top-0 left-0 mb-[50px] w-full z-50 bg-[#C61F1F] text-white text-center font-semibold text-[14px] py-2 shadow-md">
+            Подключитесь к интернету
+          </div>
+        )
+      }
+
       <nav className='py-[12px] flex justify-between items-center'>
         <img src={logo} alt="" className='cursor-pointer' onClick={() => navigate("/")} />
         <div className="flex justify-center items-center gap-[36px]">

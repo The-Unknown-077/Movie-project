@@ -15,7 +15,10 @@ export const useMovie = () => {
 
     const getMovies = (params?: MovieParams) => useQuery({
         queryKey: ["movie-key", params],
-        queryFn: ()=> api.get("/discover/movie", {params}).then(res => res.data)
+        queryFn: ()=> api.get("/discover/movie", {params}).then(res => res.data),
+        gcTime: 1000 * 60 * 60,
+        staleTime: 1000 * 4,
+        enabled: true
     })
     // const getMovies = () => useQuery({
     //     queryKey: ["movie-key", params],

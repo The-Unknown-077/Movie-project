@@ -7,6 +7,7 @@ const Bookmark = lazy(()=> import("../features/bookmark/pages/Bookmark"))
 const Movies = lazy(()=> import("../features/movies/pages/Movies"))
 const MovieDetail = lazy(()=> import("../features/movies/pages/MovieDetail"))
 const NotFound = lazy(()=> import("../features/not-found/pages/NotFound"))
+const Search = lazy(()=> import("../features/search/pages/Search"))
 
 const AppRoutes = () => {
   return useRoutes([
@@ -20,6 +21,7 @@ const AppRoutes = () => {
           {path:"movie/:id", element:<MovieDetail/> },
           {path:"saved", element:<Bookmark/> },
           {path:"*", element:<NotFound/> },
+          {path:"search", element:<Search/> },
         ]
     }
   ]);
